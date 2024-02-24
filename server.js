@@ -4,8 +4,8 @@ require('dotenv').config();
 // Import necessary packages
 const express = require('express');
 const session = require('express-session');
-const exphbs = require('express-handlebars');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
+const exphbs = require('express-handlebars');
 
 // Import sequelize connection
 const sequelize = require('./config/connection');
@@ -17,8 +17,19 @@ const routes = require('./routes');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Set up Handlebars.js as your templating engine
-const hbs = exphbs.create({});
+// Define Handlebars helpers
+const hbsHelpers = {
+  formatDate: function (date) {
+    // Format date as you prefer
+    return new Date(date).toLocaleDateString();
+  },
+  truncate: function (text, length) {
+    return text.length > length ? text.substring(0, length) + '...' : text;
+  }
+};
+
+// Set up Handlebars.js as your templating engine with custom helpers
+const hbs = exphbs.create({ helpers: hbsHelpers });
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 

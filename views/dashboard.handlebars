@@ -1,0 +1,49 @@
+{{!-- Dashboard Template --}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header class="dashboard-header">
+        <h1>Dashboard</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/logout">Logout</a>
+        </nav>
+    </header>
+
+    <section class="dashboard-content">
+        <h2>Your Posts</h2>
+        {{#each posts}}
+            {{> post/post-block}}
+        {{else}}
+            <p>You have not created any posts yet.</p>
+        {{/each}}
+    </section>
+
+    <section class="new-post">
+        <h2>Create New Post</h2>
+        <form id="new-post-form">
+            <div class="form-group">
+                <label for="post-title">Title</label>
+                <input type="text" id="post-title" name="title" required>
+            </div>
+            <div class="form-group">
+                <label for="post-content">Content</label>
+                <textarea id="post-content" name="content" rows="5" required></textarea>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+
+    <footer class="dashboard-footer">
+        <p>&copy; 2024 Your Blog Site. All rights reserved.</p>
+    </footer>
+
+    <script src="/js/dashboard.js"></script>
+</body>
+</html>

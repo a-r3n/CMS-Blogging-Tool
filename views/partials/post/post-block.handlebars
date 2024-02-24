@@ -1,0 +1,15 @@
+<article class="post">
+    <header class="post-header">
+        <h2><a href="/post/{{id}}">{{title}}</a></h2>
+        <p class="post-meta">Posted by <a href="/user/{{user_id}}">{{author}}</a> on {{formatDate created_at}}</p>
+    </header>
+    <div class="post-content">
+        <p>{{truncate content 200}}</p>
+    </div>
+    <footer class="post-footer">
+        <a href="/post/{{id}}" class="read-more">Read More</a>
+        {{#if logged_in}}
+        <button class="delete-post-btn" data-id="{{id}}">Delete</button>
+        {{/if}}
+    </footer>
+</article>

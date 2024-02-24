@@ -1,0 +1,37 @@
+{{!-- Home Template --}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Our Blog</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header class="home-header">
+        <h1>Welcome to Our Blog!</h1>
+        <nav>
+            {{#if logged_in}}
+            <a href="/dashboard">Dashboard</a>
+            <a href="/logout">Logout</a>
+            {{else}}
+            <a href="/login">Login</a>
+            <a href="/signup">Sign Up</a>
+            {{/if}}
+        </nav>
+    </header>
+
+    <section class="posts-list">
+        <h2>Recent Posts</h2>
+        {{#each posts}}
+            {{> post/post-block}}
+        {{else}}
+            <p>No posts to display.</p>
+        {{/each}}
+    </section>
+
+    <footer class="home-footer">
+        <p>&copy; 2024 Your Blog Site. All rights reserved.</p>
+    </footer>
+</body>
+</html>

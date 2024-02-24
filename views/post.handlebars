@@ -1,0 +1,44 @@
+{{!-- Individual Post Template --}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header class="post-header">
+        <h1>{{title}}</h1>
+        <nav>
+            <a href="/">Home</a>
+            {{#if logged_in}}
+            <a href="/dashboard">Dashboard</a>
+            <a href="/logout">Logout</a>
+            {{else}}
+            <a href="/login">Login</a>
+            {{/if}}
+        </nav>
+    </header>
+
+    <article class="post-content">
+        <p>Posted by <a href="/user/{{author.id}}">{{author.username}}</a> on {{formatDate created_at}}</p>
+        <div>{{{content}}}</div>
+    </article>
+
+    {{#if logged_in}}
+    <aside class="post-actions">
+        {{#if isAuthor}}
+        <a href="/post/edit/{{id}}" class="edit">Edit Post</a>
+        <button class="delete" onclick="deletePost({{id}})">Delete Post</button>
+        {{/if}}
+    </aside>
+    {{/if}}
+
+    <footer class="post-footer">
+        <p>&copy; 2024 Your Blog Site. All rights reserved.</p>
+    </footer>
+
+    <script src="/js/post.js"></script>
+</body>
+</html>
