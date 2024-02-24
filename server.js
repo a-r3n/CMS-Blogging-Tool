@@ -1,3 +1,6 @@
+// Load environment variables
+require('dotenv').config();
+
 // Import necessary packages
 const express = require('express');
 const session = require('express-session');
@@ -26,7 +29,7 @@ app.use(express.static('public'));
 
 // Set up session with Sequelize store
 app.use(session({
-  secret: 'Super secret secret',
+  secret: process.env.SESSION_SECRET, // Use the environment variable
   cookie: {
     // Session expires after 30 minutes of inactivity
     expires: 30 * 60 * 1000
