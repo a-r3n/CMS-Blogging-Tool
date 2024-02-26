@@ -8,10 +8,10 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const exphbs = require('express-handlebars');
 
 // Import sequelize connection
-const sequelize = require('./config/connection');
+const sequelize = require('./config/config');
 
 // Import routes
-const routes = require('./routes');
+const routes = require('./controllers/homeRoutes');
 
 // Setup Express App
 const app = express();
