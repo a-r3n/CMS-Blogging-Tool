@@ -11,7 +11,7 @@ const exphbs = require('express-handlebars');
 const sequelize = require('./config/config');
 
 // Import routes
-const routes = require('./controllers/homeRoutes');
+const routes = require('./controllers/index');
 
 // Setup Express App
 const app = express();
